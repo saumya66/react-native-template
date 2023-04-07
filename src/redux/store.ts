@@ -1,25 +1,15 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-
 import {baseApi} from './baseAPI';
 
-import themeReducer from './themeSlice';
-// import authReducer from '../screens/auth/authSlice';
-
+import themeReducer from './themeSlice'
 
 const combinedReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
-  // auth: authReducer,
+  theme: themeReducer
 });
 
-const rootReducer = (state: any, action: any) => {
-  if (action.type === 'auth/removeCredentials') {
-    state = undefined;
-  }
-  return combinedReducer(state, action);
-};
-
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: combinedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({serializableCheck: false}).concat(baseApi.middleware),
 });

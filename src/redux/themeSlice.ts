@@ -1,6 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {storageKeys} from '../constants';
-import {saveString} from '../utils/storage';
 
 export enum ThemeEnum {
   LIGHT = 'light',
@@ -16,7 +14,7 @@ const themeSlice = createSlice({
   reducers: {
     setTheme: (state, action: {payload: ThemeEnum}) => {
       state.currentTheme = action.payload;
-      saveString(storageKeys.USER_COLOR_PREF, action.payload);
+      //save in localstorage what is the state of theme user has selected here
     },
   },
 });

@@ -3,5 +3,5 @@ import {axiosBaseQuery} from '../api';
 
 export const baseApi = createApi({
   baseQuery: axiosBaseQuery(),
-  endpoints: () => ({}),
+  endpoints: () => ({}),  //the endpoints will be injected in various apis split in different features.
 });
